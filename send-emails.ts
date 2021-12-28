@@ -8,7 +8,7 @@ interface EmailsProps {
 
 type SendEmailProps = (emails: EmailsProps[], fn: (name: string) => string) =>  void
 
-export const sendEmails : SendEmailProps = (emails, emailTemplate)  => {
+export const sendEmails : SendEmailProps = (emails, emailTemplate, sender)  => {
 	if (typeof process.env.NODE_ENV_SG === 'undefined') {
 		console.log('process env undefined');
 		return;
@@ -19,7 +19,7 @@ export const sendEmails : SendEmailProps = (emails, emailTemplate)  => {
 	emails.forEach(({ email, name }) => {
 		const msg = {
 			to: email,
-			from: 'hubert.marzecki@gmail.com',
+			from: sender,
 			subject: 'Motyw na zajawkę',
 			text: 'Motyw na zajawkę',
 			html: emailTemplate(name)

@@ -7,5 +7,5 @@ app.use(express.json());
 const send = true
 
 if(send) {
-	sendEmails([{email: "jakisprojekt13@gmail.com", name: "ja"}], emailTemplate)
+	sendEmails([{email: "jakisprojekt13@gmail.com", name: "ja"}], emailTemplate, "sender")
 }
